@@ -1,7 +1,11 @@
 import 'package:bill_pay/utils/custom_color.dart';
 import 'package:bill_pay/view/home/home.dart';
+import 'package:bill_pay/view/profile/profile.dart';
+import 'package:bill_pay/view/transaction/transactions.dart';
 import 'package:bill_pay/view/wallet/wallet.dart';
-import 'package:bill_pay/widgets/textbuilder.dart';
+import 'package:bill_pay/widgets/bottom_item.dart';
+import 'package:bill_pay/widgets/custom_drawer.dart';
+
 import 'package:flutter/material.dart';
 
 class MainView extends StatefulWidget {
@@ -13,36 +17,26 @@ class MainView extends StatefulWidget {
 
 class _MainViewState extends State<MainView> {
   int currentIndex = 0;
-  final PageController controller =
-      PageController(initialPage: 0, keepPage: true);
+  late PageController controller;
+  final GlobalKey<ScaffoldState> key = GlobalKey();
   List<Widget> _pages = [
     Home(),
     Wallet(),
-    Container(
-      height: double.infinity,
-      width: double.infinity,
-      color: Colors.green,
-    ),
-    Container(
-      height: double.infinity,
-      width: double.infinity,
-      color: Colors.lightBlue,
-    ),
-    Container(
-      height: double.infinity,
-      width: double.infinity,
-      color: Colors.black26,
-    ),
+    Transactions(),
+    Profile(),
   ];
   @override
   void initState() {
     super.initState();
+    controller = PageController(initialPage: 0, keepPage: true);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: key,
       backgroundColor: Colors.white,
+      drawer: CustomDrawer(),
       body: Column(
         children: [
           Expanded(
@@ -134,10 +128,7 @@ class _MainViewState extends State<MainView> {
                         text: 'More',
                         onPressed: () {
                           setState(() {
-                            currentIndex = 4;
-                            controller.animateToPage(4,
-                                duration: Duration(milliseconds: 400),
-                                curve: Curves.decelerate);
+                            key.currentState!.openDrawer();
                           });
                         },
                       ),
@@ -146,47 +137,6 @@ class _MainViewState extends State<MainView> {
                 ),
               ],
             ),
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class BottomItem extends StatelessWidget {
-  final String? icon;
-  final String? text;
-  final Color? color;
-  final Function()? onPressed;
-  final double? height, width;
-  const BottomItem({
-    Key? key,
-    this.icon,
-    this.text,
-    this.color,
-    this.onPressed,
-    this.height = 30,
-    this.width = 30,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-            icon!,
-            height: height,
-            width: width,
-            color: color,
-          ),
-          const SizedBox(height: 5.0),
-          TextBuilder(
-            text: text,
-            color: color,
-            fontWeight: FontWeight.w400,
           )
         ],
       ),
