@@ -1,4 +1,5 @@
 import 'package:bill_pay/utils/custom_color.dart';
+import 'package:bill_pay/view/wallet/confirm_password.dart';
 import 'package:bill_pay/widgets/custom_btn.dart';
 import 'package:bill_pay/widgets/custom_textfield.dart';
 import 'package:bill_pay/widgets/textbuilder.dart';
@@ -196,7 +197,8 @@ class _WalletState extends State<Wallet> {
                   title: 'Fund my wallet',
                   width: MediaQuery.of(context).size.width * 0.6,
                   onTap: () {
-                    Navigator.pop(context);
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ConfirmPass()));
                   },
                 ),
               )

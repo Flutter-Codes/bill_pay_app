@@ -81,6 +81,7 @@ class _ProfileState extends State<Profile> {
               ),
             ),
             const SizedBox(height: 10.0),
+            if (selectdIndex == 0) SecurityScreen(),
             if (selectdIndex == 1) SecurityScreen(),
             if (selectdIndex == 2) FeaturesScreen(),
           ],

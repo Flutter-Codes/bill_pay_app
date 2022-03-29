@@ -1,6 +1,7 @@
 import 'package:bill_pay/utils/custom_color.dart';
 import 'package:bill_pay/view/home/data_bundle.dart';
 import 'package:bill_pay/view/home/fund_transfer.dart';
+import 'package:bill_pay/view/home/mobile_airtime.dart';
 import 'package:bill_pay/widgets/textbuilder.dart';
 import 'package:bill_pay/widgets/top_card.dart';
 import 'package:flutter/material.dart';
@@ -147,14 +148,21 @@ class Home extends StatelessWidget {
                 itemBuilder: (BuildContext context, int i) {
                   return InkWell(
                     onTap: () {
-                      if (i == 1) {
+                      if (i == 0) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MobileAirtime(),
+                          ),
+                        );
+                      } else if (i == 1)
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => DataBundle(),
                           ),
                         );
-                      } else if (i == 6)
+                      else if (i == 6)
                         Navigator.push(
                           context,
                           MaterialPageRoute(

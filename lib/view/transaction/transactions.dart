@@ -1,4 +1,5 @@
 import 'package:bill_pay/utils/custom_color.dart';
+import 'package:bill_pay/view/transaction/transactions_share.dart';
 import 'package:bill_pay/widgets/textbuilder.dart';
 import 'package:bill_pay/widgets/top_menu_item.dart';
 import 'package:flutter/material.dart';
@@ -83,42 +84,50 @@ class _TransactionsState extends State<Transactions> {
               shrinkWrap: true,
               physics: ScrollPhysics(),
               itemBuilder: (BuildContext context, int i) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: Container(
-                    color: Colors.white,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 40),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const SizedBox(height: 20.0),
-                              TextBuilder(
-                                text: 'Mobile Airtime',
-                                color: kPrimary,
-                                fontSize: 17,
-                                fontWeight: FontWeight.w600,
-                              ),
-                              const SizedBox(height: 15.0),
-                              TextBuilder(
-                                text: '20th May 2020',
-                                color: kPrimary,
-                                fontSize: 13,
-                                fontWeight: FontWeight.w400,
-                              ),
-                              const SizedBox(height: 8.0),
-                            ],
-                          ),
-                          TextBuilder(
-                            text: '-200',
-                            fontSize: 15,
-                            color: Colors.red,
-                            fontWeight: FontWeight.w500,
-                          )
-                        ],
+                return InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => TransactionsShare()));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: Container(
+                      color: Colors.white,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 40),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const SizedBox(height: 20.0),
+                                TextBuilder(
+                                  text: 'Mobile Airtime',
+                                  color: kPrimary,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                                const SizedBox(height: 15.0),
+                                TextBuilder(
+                                  text: '20th May 2020',
+                                  color: kPrimary,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                                const SizedBox(height: 8.0),
+                              ],
+                            ),
+                            TextBuilder(
+                              text: '-200',
+                              fontSize: 15,
+                              color: Colors.red,
+                              fontWeight: FontWeight.w500,
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),

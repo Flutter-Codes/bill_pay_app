@@ -66,35 +66,39 @@ class _MainViewState extends State<MainView> {
                 ),
                 Container(
                   height: 70,
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      BottomItem(
-                        icon: 'assets/icons/home.png',
-                        color: currentIndex == 0 ? kPrimary : kInactive,
-                        text: 'Home',
-                        onPressed: () {
-                          setState(() {
-                            currentIndex = 0;
-                            controller.animateToPage(0,
-                                duration: Duration(milliseconds: 400),
-                                curve: Curves.ease);
-                          });
-                        },
+                      Expanded(
+                        child: BottomItem(
+                          icon: 'assets/icons/home.png',
+                          color: currentIndex == 0 ? kPrimary : kInactive,
+                          text: 'Home',
+                          onPressed: () {
+                            setState(() {
+                              currentIndex = 0;
+                              controller.animateToPage(0,
+                                  duration: Duration(milliseconds: 400),
+                                  curve: Curves.ease);
+                            });
+                          },
+                        ),
                       ),
-                      BottomItem(
-                        icon: 'assets/icons/wallet.png',
-                        color: currentIndex == 1 ? kPrimary : kInactive,
-                        text: 'Wallet',
-                        onPressed: () {
-                          setState(() {
-                            currentIndex = 1;
-                            controller.animateToPage(1,
-                                duration: Duration(milliseconds: 400),
-                                curve: Curves.decelerate);
-                          });
-                        },
+                      Expanded(
+                        child: BottomItem(
+                          icon: 'assets/icons/wallet.png',
+                          color: currentIndex == 1 ? kPrimary : kInactive,
+                          text: 'Wallet',
+                          onPressed: () {
+                            setState(() {
+                              currentIndex = 1;
+                              controller.animateToPage(1,
+                                  duration: Duration(milliseconds: 400),
+                                  curve: Curves.decelerate);
+                            });
+                          },
+                        ),
                       ),
                       BottomItem(
                         icon: 'assets/icons/sync.png',
@@ -109,28 +113,32 @@ class _MainViewState extends State<MainView> {
                           });
                         },
                       ),
-                      BottomItem(
-                        icon: 'assets/icons/user.png',
-                        color: currentIndex == 3 ? kPrimary : kInactive,
-                        text: 'Profile',
-                        onPressed: () {
-                          setState(() {
-                            currentIndex = 3;
-                            controller.animateToPage(3,
-                                duration: Duration(milliseconds: 400),
-                                curve: Curves.decelerate);
-                          });
-                        },
+                      Expanded(
+                        child: BottomItem(
+                          icon: 'assets/icons/user.png',
+                          color: currentIndex == 3 ? kPrimary : kInactive,
+                          text: 'Profile',
+                          onPressed: () {
+                            setState(() {
+                              currentIndex = 3;
+                              controller.animateToPage(3,
+                                  duration: Duration(milliseconds: 400),
+                                  curve: Curves.decelerate);
+                            });
+                          },
+                        ),
                       ),
-                      BottomItem(
-                        icon: 'assets/icons/menu.png',
-                        color: currentIndex == 4 ? kPrimary : kInactive,
-                        text: 'More',
-                        onPressed: () {
-                          setState(() {
-                            key.currentState!.openDrawer();
-                          });
-                        },
+                      Expanded(
+                        child: BottomItem(
+                          icon: 'assets/icons/menu.png',
+                          color: currentIndex == 4 ? kPrimary : kInactive,
+                          text: 'More',
+                          onPressed: () {
+                            setState(() {
+                              key.currentState!.openDrawer();
+                            });
+                          },
+                        ),
                       ),
                     ],
                   ),
